@@ -4,12 +4,6 @@ const cacheAssets = [
     '/index.html',
     '/style.css',
     '/js/main.js',
-    '/img/portflio-1.jpg',
-    '/img/portflio-2.jpg',
-    '/img/portflio-3.jpg',
-    '/img/portflio-4.jpg',
-    '/img/portflio-5.jpg',
-    '/img/portflio-9.jpg',
   ];
 
 
