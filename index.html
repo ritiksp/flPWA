@@ -35,6 +35,12 @@
     <link rel="icon" sizes="512x512" href="/img/logo/logo512.png">
     <link rel="apple-touch-icon" sizes="512x512" href="/img/logo/logo512.png">
 
+    <style>
+      #profile{
+        display: none;
+      }
+    </style>
+
 </head>
 <body>
     <section style="padding: 3em; text-align: center;" id="installBanner" class="banner">
@@ -51,7 +57,10 @@
         
           <span>
           <p>login with social media</p>
-          <a  id="a1" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+          <a  id="a1" href="#"><fb:login-button 
+            scope="public_profile,email"
+            onlogin="checkLoginState();">
+            </fb:login-button></a>
           <a id="a2" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
           <a id="a3" href="#"><i class="fa fa-google" aria-hidden="true"></i></a>
           <a id="a4" href="#"><i class="fa fa-apple" aria-hidden="true"></i></a>
@@ -88,6 +97,11 @@
       
     </div>
 
+    <div class="container">
+      <h1 id="healding">Welcome to fruitine facebook user</h1>
+      <div id="profile"></div>
+
+    </div>
 
     <!-- Login End -->
 
@@ -119,10 +133,12 @@
 
         function statusChangeCallback(response){
             if(response.status == 'connected'){
-              console.log('Logged In')
+              console.log('Logged In');
+              setElements(true);
             }
             else{
-              console.log('not auth')
+              console.log('not auth');
+              setElements(flase);
             }
         }
 
@@ -132,13 +148,39 @@
             statusChangeCallback(response);
           });
         }
+
+        function testAPI(){
+          FB.api('/me?fields=name,email', function(response){
+            if(response && !response.error){
+              // console.log(response);
+              buildProfile(response);
+            }
+          })
+        }
+
+        function buildProfile(user){
+          var profile = `
+            <h3>${user.name}</h3>
+            <h3>${user.email}</h3>
+          `;
+
+          document.getElementById('profile').innerHTML = profile;
+        }
+
+        function setElements(isLoggedIn){
+          if(isLoggedIn){
+            document.getElementById('profile').style.display = 'block';
+
+          }
+          else{
+            document.getElementById('profile').style.display = 'none';
+          }
+
+        }
       </script>
 
       
-      <fb:login-button 
-      scope="public_profile,email"
-      onlogin="checkLoginState();">
-      </fb:login-button>
+   <!-- Facebook login Ends -->
 
 
 
