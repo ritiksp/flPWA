@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI</title>
+</head>
+<body>
+    <script src="bmi.js"></script>
+
+    <form name="bmiForm">
+        Your Weight(kg): <input type="text" name="weight" size="10"><br />
+        Your Height(cm): <input type="text" name="height" size="10"><br />
+        Your Age: <input type="text" name="age" size="10"><br />
+        Select Gender: 
+    <input type="radio" name="gender" value="Male">Male 
+    <input type="radio" name="gender" value="Female">Female 
+    <input type="radio" name="gender" value="Others">Others 
+    <br> 
+        <input type="button" value="Calculate BMI" onClick="calculateBmi()"><br />
+        Your BMI: <input type="text" name="bmi" size="10"><br />
+        Gender: <div id="result"></div>
+        This Means: <input type="text" name="meaning" size="25"><br />
+        <input type="reset" value="Reset" />
+    </form>
+
+
+</body>
+</html>
